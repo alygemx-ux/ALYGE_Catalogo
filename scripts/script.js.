@@ -1,7 +1,7 @@
 // ===============================
 // CONFIGURACIÓN
 // ===============================
-const scriptURL = "https://script.google.com/macros/s/AKfycbw3nXtm3oMR1Oq0EWHZJw_qGPQ5BeybnspcT2jXR_JhwrpRF9tiPKV5qFqNPUvxgDql/exec";
+const scriptURL = "https://script.google.com/a/macros/automotrizencarnacion.com.mx/s/AKfycbx6lcvsBOjbtQQrAyvrvssez5MsjQAiw9pC1BkbhHOIOMxHq0LunGY-aYLeSl6PFctt/exec";
 const contenedorProductos = document.getElementById("productos");
 const buscador = document.getElementById("buscador");
 const categoriasNav = document.getElementById("categorias");
