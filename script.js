@@ -16,7 +16,7 @@ async function cargarDatos() {
 
 function mostrarCategorias() {
   const contenedor = document.getElementById("categorias");
-  const categorias = [...new Set(productos.map(p => p.CategorÌa))];
+  const categorias = [...new Set(productos.map(p => p.Categor√≠a))];
   contenedor.innerHTML = categorias.map(cat =>
     `<span class="categoria" onclick="filtrar('${cat}')">${cat}</span>`
   ).join('');
@@ -26,21 +26,21 @@ function mostrarProductos(lista) {
   const contenedor = document.getElementById("productos");
   contenedor.innerHTML = lista.map(p => `
     <div class="card" onclick="abrirModal('${encodeURIComponent(JSON.stringify(p))}')">
-      <img src="${p.Imagen_Frontal || 'images/placeholder.png'}" alt="${p.DescripciÛn}">
-      <h3>${p.DescripciÛn}</h3>
+      <img src="${p.Imagen_Frontal || 'images/placeholder.png'}" alt="${p.Descripci√≥n}">
+      <h3>${p.Descripci√≥n}</h3>
       <p><strong>$${p.Precio}</strong></p>
     </div>
   `).join('');
 }
 
 function filtrar(cat) {
-  const filtrados = productos.filter(p => p.CategorÌa === cat);
+  const filtrados = productos.filter(p => p.Categor√≠a === cat);
   mostrarProductos(filtrados);
 }
 
 document.getElementById("buscador").addEventListener("input", e => {
   const texto = e.target.value.toLowerCase();
-  const filtrados = productos.filter(p => p.DescripciÛn.toLowerCase().includes(texto));
+  const filtrados = productos.filter(p => p.Descripci√≥n.toLowerCase().includes(texto));
   mostrarProductos(filtrados);
 });
 
