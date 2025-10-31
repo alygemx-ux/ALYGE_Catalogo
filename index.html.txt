@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Catálogo ALYGE</title>
+
+  <!-- Enlace a la hoja de estilos -->
+  <link rel="stylesheet" href="styles/style.css">
+</head>
+
+<body>
+  <header>
+    <img src="images/logo.png" alt="Logo Alyge" class="logo">
+    <h1>Catálogo ALYGE</h1>
+  </header>
+
+  <section class="buscador">
+    <input type="text" id="buscador" placeholder="Buscar productos...">
+  </section>
+
+  <nav id="categorias"></nav>
+
+  <main id="productos" class="productos"></main>
+
+  <!-- Modal de vista ampliada -->
+  <div id="modal" class="modal">
+    <div class="modal-contenido">
+      <span id="cerrarModal" class="cerrar">&times;</span>
+      <div class="galeria">
+        <img id="imgPrincipal" src="" alt="">
+        <div id="miniaturas"></div>
+      </div>
+      <div class="info">
+        <h2 id="modalNombre"></h2>
+        <p id="modalDescripcion"></p>
+        <p id="modalMarca"></p>
+        <p id="modalPrecio"></p>
+        <button id="btnWhatsApp">Consultar por WhatsApp</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Enlace al archivo JavaScript -->
+  <script src="scripts/script.js"></script>
+</body>
+</html>
