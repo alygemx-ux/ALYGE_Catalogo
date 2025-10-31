@@ -1,4 +1,4 @@
-const API_URL = https://script.google.com/macros/s/AKfycbw3nXtm3oMR1Oq0EWHZJw_qGPQ5BeybnspcT2jXR_JhwrpRF9tiPKV5qFqNPUvxgDql/exec; 
+const API_URL = "https://script.google.com/macros/s/AKfycbw3nXtm3oMR1Oq0EWHZJw_qGPQ5BeybnspcT2jXR_JhwrpRF9tiPKV5qFqNPUvxgDql/exec";
 const NUMERO_WHATSAPP = "5213318192003";
 
 let productos = [];
@@ -43,6 +43,17 @@ document.getElementById("buscador").addEventListener("input", e => {
   const filtrados = productos.filter(p => p.Descripción.toLowerCase().includes(texto));
   mostrarProductos(filtrados);
 });
+fetch(API_URL)
+  .then(res => res.json())
+  .then(data => {
+    console.log("✅ Datos recibidos desde Google Sheets:", data);
+    productos = data;
+    mostrarCategorias();
+    mostrarProductos(productos);
+  })
+  .catch(err => console.error("❌ Error al obtener datos:", err));
+
 
 cargarDatos();
+
 
