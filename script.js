@@ -1,4 +1,4 @@
-const API_URL = https://script.google.com/macros/s/AKfycbwAgjKqyppFMClRaIUKha-GvsHHkljmfhjJB9-kliJlijD-DlAGSnJD1H5Njwu2s0D1/exec; 
+const API_URL = https://script.google.com/macros/s/AKfycbw3nXtm3oMR1Oq0EWHZJw_qGPQ5BeybnspcT2jXR_JhwrpRF9tiPKV5qFqNPUvxgDql/exec; 
 const NUMERO_WHATSAPP = "5213318192003";
 
 let productos = [];
@@ -45,3 +45,4 @@ document.getElementById("buscador").addEventListener("input", e => {
 });
 
 cargarDatos();
+
