@@ -1,6 +1,7 @@
-// ✅ URL de tu script de Google Sheets
+// ===============================
+// CONFIGURACIÓN
+// ===============================
 const scriptURL = "https://script.google.com/macros/s/AKfycbw3nXtm3oMR1Oq0EWHZJw_qGPQ5BeybnspcT2jXR_JhwrpRF9tiPKV5qFqNPUvxgDql/exec";
-
 const contenedorProductos = document.getElementById("productos");
 const buscador = document.getElementById("buscador");
 const categoriasNav = document.getElementById("categorias");
@@ -12,89 +13,4 @@ const miniaturas = document.getElementById("miniaturas");
 const modalNombre = document.getElementById("modalNombre");
 const modalDescripcion = document.getElementById("modalDescripcion");
 const modalMarca = document.getElementById("modalMarca");
-const modalPrecio = document.getElementById("modalPrecio");
-const btnWhatsApp = document.getElementById("btnWhatsApp");
-const cerrarModal = document.getElementById("cerrarModal");
-
-let productos = [];
-
-// ✅ Cargar los datos desde Google Sheets
-fetch(scriptURL)
-  .then(response => response.json())
-  .then(data => {
-    productos = data.filter(p => p.ID && p.Descripción); // limpia filas vacías
-    mostrarCategorias();
-    mostrarProductos(productos);
-  })
-  .catch(error => {
-    console.error("Error al cargar productos:", error);
-  });
-
-// ✅ Mostrar categorías
-function mostrarCategorias() {
-  const categoriasUnicas = [...new Set(productos.map(p => p.Categoría).filter(c => c))];
-  categoriasNav.innerHTML = categoriasUnicas.map(cat => `
-    <button class="categoria-btn" onclick="filtrarCategoria('${cat}')">${cat}</button>
-  `).join("");
-}
-
-// ✅ Mostrar productos
-function mostrarProductos(lista) {
-  contenedorProductos.innerHTML = lista.map(p => `
-    <div class="producto" onclick="abrirModal(${p.ID})">
-      <img src="${p.Imagen_Frontal || 'images/no-image.jpg'}" alt="${p.Descripción}">
-      <h3>${p.Descripción}</h3>
-      <p class="marca">${p.Marca}</p>
-      <p class="precio">$${p.Precio}</p>
-      <p class="stock ${p.Stock === 'Disponible' ? 'disponible' : 'agotado'}">${p.Stock}</p>
-    </div>
-  `).join("");
-}
-
-// ✅ Buscar productos
-buscador.addEventListener("input", e => {
-  const texto = e.target.value.toLowerCase();
-  const filtrados = productos.filter(p =>
-    p.Descripción.toLowerCase().includes(texto) ||
-    p.Marca.toLowerCase().includes(texto) ||
-    p.Categoría.toLowerCase().includes(texto)
-  );
-  mostrarProductos(filtrados);
-});
-
-// ✅ Filtrar por categoría
-function filtrarCategoria(categoria) {
-  const filtrados = productos.filter(p => p.Categoría === categoria);
-  mostrarProductos(filtrados);
-}
-
-// ✅ Modal de producto
-function abrirModal(id) {
-  const producto = productos.find(p => p.ID == id);
-  if (!producto) return;
-
-  imgPrincipal.src = producto.Imagen_Frontal || 'images/no-image.jpg';
-  modalNombre.textContent = producto.Descripción;
-  modalDescripcion.textContent = producto.Características;
-  modalMarca.textContent = "Marca: " + producto.Marca;
-  modalPrecio.textContent = "$" + producto.Precio;
-
-  const imagenes = [producto.Imagen_Frontal, producto.Imagen_Lateral, producto.Imagen_Posterior].filter(Boolean);
-  miniaturas.innerHTML = imagenes.map(img => `<img src="${img}" class="mini" onclick="cambiarImagen('${img}')">`).join("");
-
-  btnWhatsApp.onclick = () => {
-    const mensaje = encodeURIComponent(`Hola, estoy interesado en el producto: ${producto.Descripción} (${producto.Marca})`);
-    window.open(`https://wa.me/521XXXXXXXXXX?text=${mensaje}`, "_blank");
-  };
-
-  modal.style.display = "flex";
-}
-
-// ✅ Cerrar modal
-cerrarModal.onclick = () => modal.style.display = "none";
-window.onclick = e => { if (e.target == modal) modal.style.display = "none"; };
-
-// ✅ Cambiar imagen principal
-function cambiarImagen(url) {
-  imgPrincipal.src = url;
-}
+const modalPrecio = document.get
